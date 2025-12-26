@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS products (
+	id TEXT PRIMARY KEY,
+	name TEXT NOT NULL,
+    price DECIMAL NOT NULL,
+	stock INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS orders (
+	id TEXT PRIMARY KEY,
+    product_id TEXT NOT NULL REFERENCES products(id),
+    quantity INT NOT NULL,
+    total_price DECIMAL NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

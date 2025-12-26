@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  database:
+    image: postgres:15.8-alpine
+    container_name: inventory-order-management-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=inventory-order-management
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  migrate:
+    image: migrate/migrate
+    volumes:
+      - ./migrations:/migrations
+    command: 
+      - -path=/migrations/
+      - -database=postgres://postgres:password@database:5432/inventory-order-management?sslmode=disable
+      - up
+    depends_on:
+      - database
+    restart: on-failure
+
+volumes:
+  postgres_data:
