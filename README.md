@@ -47,8 +47,8 @@ Docker & Docker Compose
 Clone the repository:
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/inventory-system.git](https://github.com/YOUR_USERNAME/inventory-system.git)
-cd inventory-system
+git clone https://github.com/iamtbay/inventory-stock-management
+cd inventory-stock-management
 ```
 Start the application (DB + App + Migrations):
 
